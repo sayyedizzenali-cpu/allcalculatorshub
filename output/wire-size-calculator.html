@@ -30,27 +30,47 @@
     padding: 0;
   }
   header {
+    position: sticky;
+    top: 0;
+    z-index: 1000;
     border-bottom: 1px solid var(--border);
     padding: 16px 24px;
     display: flex;
     align-items: center;
     gap: 12px;
+    background: rgba(15, 15, 19, 0.9);
+    backdrop-filter: blur(10px);
   }
   .logo {
-    font-size: 18px;
+    font-size: 20px;
     font-weight: 700;
-    color: var(--accent);
+    color: var(--text);
     text-decoration: none;
   }
-  .logo span { color: var(--text); }
+  .logo .accent { color: #3b82f6; }
   nav { margin-left: auto; display: flex; gap: 20px; }
   nav a {
     color: var(--muted);
     text-decoration: none;
     font-size: 14px;
     transition: color 0.2s;
+    position: relative;
   }
-  nav a:hover { color: var(--text); }
+  nav a:hover { 
+    color: var(--text); 
+  }
+  nav a:hover::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: var(--accent);
+  }
+  nav a.active {
+    color: var(--accent);
+  }
 
   main {
     max-width: 900px;
@@ -237,13 +257,14 @@
     h1 { font-size: 24px; }
     .result-value { font-size: 30px; }
     .calc-card { padding: 20px; }
+    nav { display: none; }
   }
 </style>
 </head>
 <body>
 
 <header>
-  <a href="index.html" class="logo">Calc<span>Hub</span></a>
+  <a href="index.html" class="logo">AllCalculators<span class="accent">Hub</span></a>
   <nav>
     <a href="finance.html">Finance</a>
     <a href="health.html">Health</a>
